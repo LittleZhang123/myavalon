@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="avalon2.js"></script>
+    </head>
+    <body>
+        <div ms-controller="box">
+            <div ms-each-el="array">
+                <p>${{$index}}  ——  {{el}}</p>
+            </div>
+        </div>
+        <script>
+
+
+
+            var a = avalon.define("box", function(vm) {
+                vm.array = ["aaaa", "bbbb", "cccc", "dddd", "eeee"]
+            })
+
+            setTimeout(function() {
+                a.array.push(6, 7, 8, 9)
+            }, 1000)
+            setTimeout(function() {
+                a.array.shift()
+            }, 2000)
+            setTimeout(function() {
+                a.array.unshift("a", "b", "c", "d")
+            }, 3000)
+            setTimeout(function() {
+                a.array.pop()
+            }, 4000)
+            setTimeout(function() {
+                a.array.sort()
+            }, 5000)
+        </script>
+    </body>
+</html>

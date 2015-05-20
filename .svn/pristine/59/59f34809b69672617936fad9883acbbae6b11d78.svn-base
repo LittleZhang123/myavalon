@@ -1,0 +1,28 @@
+<!doctype html>
+<html >
+    <head>
+        <script src="avalon.mobile.js"></script>
+    </head>
+    <body ms-controller="test">
+        <input type="checkbox" ms-duplex-radio="bTmp1" /><br/>
+        <input type="checkbox" ms-duplex-radio="bTmp2" /><br/>
+        <button ms-click="f1">test</button>{{bTmp2}}<br/>
+        Show when checked:
+        <span ms-if="bTmp1">
+            <span ms-if="bTmp2" style="color:red">{{bTmp2}}</span>
+        </span>
+
+        <script>
+            avalon.define("test", function(vm) {
+                vm.bTmp1 = true
+                vm.bTmp2 = true
+                vm.f1 = function() {
+                    vm.bTmp1 = false
+                    vm.bTmp2 = !vm.bTmp2
+                    vm.bTmp1 = true
+                }
+            })
+
+        </script>
+    </body>
+</html>

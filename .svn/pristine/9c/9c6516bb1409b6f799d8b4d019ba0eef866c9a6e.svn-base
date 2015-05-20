@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body ms-controller="page">
+        <div ms-each="arr">
+            <button>测试{{$index}}</button>{{$index}}
+        </div>
+        <table border="1">
+            <tr>
+                <td ms-repeat="arr">
+                    <button>测试{{$index}}</button>{{$index}}
+                </td>
+            </tr>
+        </table>
+        <ul>
+            <li ms-repeat="arr"><button>测试{{$index}}</button>{{$index}}</li>
+        </ul>
+        <script src="avalon.js"></script>
+        <script>
+            var vm1 = avalon.define('page', function(vm) {
+                vm.arr = ["a", "b", "c", "d"]
+            });
+        </script>
+    </body>
+</html>

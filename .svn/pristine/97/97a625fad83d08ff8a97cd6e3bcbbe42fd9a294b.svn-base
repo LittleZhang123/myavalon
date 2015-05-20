@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset='utf-8'/>
+        <title>联动下拉</title>
+        <script src='avalon.js'></script>
+        <script>
+            var md = avalon.define('Mselect', function(vm) {
+                vm.name = 'school';
+                vm.onSchool = 1;//初始学校
+                vm.data = [{
+                        'title': '1大学', 'value': 1,
+                        'cnode': [//select标签
+                            {'name': 'specialty', 'dataList': [{'title': '临床', 'value': '1'}, {'title': '中医药', 'value': '2'}]},
+                            {'name': 'language', 'dataList': [{'title': '英语', 'value': '1'}, {'title': '法语', 'value': '2'}]}
+                        ]
+                    },
+                    {
+                        'title': '2大学', 'value': 2,
+                        'cnode': [
+                            {'name': 'specialty2', 'dataList': [{'title': 'eee', 'value': '1'}, {'title': 'bbb', 'value': '2'}]},
+                            {'name': 'aaa', 'dataList': [{'title': 'bbb', 'value': '1'}, {'title': 'eee', 'value': '2'}]}
+                        ]
+                    }];
+            });
+
+        </script>
+    </head>
+    <body>
+        <div ms-controller="Mselect">
+            <select ms-attr-name="name" ms-duplex="onSchool" >
+                <option ms-repeat-el="data" ms-attr-value="el.value">{{el.title}}</option>
+            </select>
+            <div  ms-repeat-el="data" ms-if-loop="onSchool==el.value">
+
+                <input type="text" ms-repeat-ip="el.cinput" ms-attr-name="ip.name" ms-attr-value="ip.value"/>
+                <select ms-repeat-it="el.cnode" ms-attr-name="it.name" >
+                    <option ms-repeat-item="it.dataList" ms-attr-value="item.value">{{item.title}}</option>
+                </select>
+
+            </div>
+        </div>
+
+    </body>
+</html>

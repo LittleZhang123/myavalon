@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="avalon.js"></script>
+        <script>
+
+
+        </script>
+    </head>
+    <body ms-controller="xxx">
+        <table>
+            <thead>
+                <tr><th>First name</th><th>Last name</th></tr>
+            </thead>
+            <tbody ms-each-p="people">
+                <tr>
+                    <td >{{p.firstName}}</td>
+                    <td >{{p.lastName}}</td>
+                </tr>
+            </tbody>
+
+        </table>
+
+        <script type="text/javascript">
+          
+          var vmodel =  avalon.define("xxx", function(vm) {
+                vm.people = [{firstName: 'Bert', lastName: 'Bertington'},
+                    {firstName: 'Charles', lastName: 'Charlesforth'},
+                    {firstName: 'Denise', lastName: 'Dentiste'}
+                ]
+            })
+            setTimeout(function(){
+                  vmodel.people[0].firstName = "ddddd"
+            },1000)
+          
+
+        </script>
+    </body>
+</html>
